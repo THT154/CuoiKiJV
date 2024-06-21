@@ -11,13 +11,15 @@ import javax.swing.JOptionPane;
 import user.Login;
 import user.Notification;
 import static user.UserDashboard.userEmail;
+import  user.Notification;
 
 /**
  *
  * @author nghia123
  */
 public class SupplierDashboard extends javax.swing.JFrame {
-
+    
+    private Notification notification;
     Color selectioncolor = new Color(34, 48, 62);
     Color sideColor = new Color(64, 194, 150);
     Color textSelectioncolor = new Color(255, 255, 255);
@@ -25,7 +27,8 @@ public class SupplierDashboard extends javax.swing.JFrame {
     /**
      * Creates new form SupplierDashboard
      */
-    public SupplierDashboard() {
+    public SupplierDashboard(Notification notification) {
+        this.notification = notification;
         initComponents();
         init();
     }
@@ -449,46 +452,11 @@ public class SupplierDashboard extends javax.swing.JFrame {
         jLabel20.setVisible(false);
         jLabel17.setVisible(true);
        
-        user.Notification supplierNotification = new Notification();
-        supplierNotification.setVisible(true);
-        supplierNotification.pack();
+        notification.setVisible(true);
+        notification.pack();
         
     }//GEN-LAST:event_jLabel22MouseClicked
 
-    /**
-     * @param args the command line arguments
-     */
-    public static void main(String args[]) {
-        /* Set the Nimbus look and feel */
-        //<editor-fold defaultstate="collapsed" desc=" Look and feel setting code (optional) ">
-        /* If Nimbus (introduced in Java SE 6) is not available, stay with the default look and feel.
-         * For details see http://download.oracle.com/javase/tutorial/uiswing/lookandfeel/plaf.html 
-         */
-        try {
-            for (javax.swing.UIManager.LookAndFeelInfo info : javax.swing.UIManager.getInstalledLookAndFeels()) {
-                if ("Nimbus".equals(info.getName())) {
-                    javax.swing.UIManager.setLookAndFeel(info.getClassName());
-                    break;
-                }
-            }
-        } catch (ClassNotFoundException ex) {
-            java.util.logging.Logger.getLogger(SupplierDashboard.class.getName()).log(java.util.logging.Level.SEVERE, null, ex);
-        } catch (InstantiationException ex) {
-            java.util.logging.Logger.getLogger(SupplierDashboard.class.getName()).log(java.util.logging.Level.SEVERE, null, ex);
-        } catch (IllegalAccessException ex) {
-            java.util.logging.Logger.getLogger(SupplierDashboard.class.getName()).log(java.util.logging.Level.SEVERE, null, ex);
-        } catch (javax.swing.UnsupportedLookAndFeelException ex) {
-            java.util.logging.Logger.getLogger(SupplierDashboard.class.getName()).log(java.util.logging.Level.SEVERE, null, ex);
-        }
-        //</editor-fold>
-
-        /* Create and display the form */
-        java.awt.EventQueue.invokeLater(new Runnable() {
-            public void run() {
-                new SupplierDashboard().setVisible(true);
-            }
-        });
-    }
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
     public static javax.swing.JLabel jDeliverys;

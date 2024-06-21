@@ -10,6 +10,7 @@ public class Server {
 
     private static final int PORT = 5000;
     private List<ClientHandler> clients = new ArrayList<>();
+    private List<ClientReport> clientsReport = new ArrayList<>();
 
     public void startServer() {
         try {
@@ -19,15 +20,10 @@ public class Server {
             while (true) {
                 Socket clientSocket = serverSocket.accept();
                 System.out.println("New connection from IP: " + clientSocket.getInetAddress().getHostAddress());
-                String id = Login.jTextField1.getText().toString();
 
-                ClientHandler clientHandler = new ClientHandler(clientSocket,id, this);
+                ClientHandler clientHandler = new ClientHandler(clientSocket, this);
                 clients.add(clientHandler);
-                
-                
-
                 new Thread(clientHandler).start();
-
             }
 
         } catch (Exception e) {
@@ -35,13 +31,15 @@ public class Server {
         }
     }
 
-    public void sendMessageHistory() {
-
-    }
-
-    public void broadcastMessage(String id, String message, String time) {
+    public void broadcastMessage(String id, String message) {
         for (ClientHandler client : clients) {
-            client.sendMessage("Thông báo từ quản trị viên : " + message + "\n" + time);
+            client.sendMessage("Thông báo từ quản trị viên : " + message);
+        }
+    }
+    
+    public void ListReport(String id){
+        for (ClientReport client : clientsReport) {
+            
         }
     }
 

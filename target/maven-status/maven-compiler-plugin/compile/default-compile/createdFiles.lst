@@ -37,11 +37,9 @@ Supplier\SupplierAccount$3.class
 user\ForgotPassword.class
 Supplier\Delivery$2.class
 admin\AdminNotification$3.class
-Supplier\MyDelivery$3.class
 user\UserAccount$9.class
 admin\ManageUsers$1.class
 admin\AdminReport.class
-Supplier\MyDelivery.class
 connection\MyConnection.class
 Supplier\SupplierDashboard$5.class
 user\UserAccount$10.class
@@ -110,7 +108,6 @@ admin\Transaction.class
 admin\ManageCategory$7.class
 admin\ManageSuppliers$3.class
 Server\ClientHandler.class
-Supplier\MyDelivery$1.class
 Supplier\SupplierAccount$1.class
 user\Signup$3.class
 user\Purchase$11.class
@@ -122,7 +119,6 @@ Supplier\Delivery$5.class
 user\PurchaseDetails$6.class
 user\ForgotPassword$7.class
 admin\ManageProduct.class
-Dao\SupplierDao.class
 user\Purchase$4.class
 user\UserAccount$7.class
 user\Signup$13.class
@@ -169,7 +165,6 @@ user\UserDashboard$4.class
 admin\ManageUsers$8.class
 admin\AddSupplier.class
 Dao\UserDao.class
-Supplier\MyDelivery$2.class
 user\Signup$9.class
 admin\AdminDashboard$9.class
 admin\SelectSupplier$2.class
@@ -206,7 +201,6 @@ admin\SelectSupplier.class
 Supplier\SupplierAccount$2.class
 admin\AdminReport$1.class
 Supplier\SupplierAccount$11.class
-Supplier\SupplierDashboard$6.class
 admin\ManageUsers$15.class
 admin\ManageSuppliers$10.class
 Dao\MD5.class

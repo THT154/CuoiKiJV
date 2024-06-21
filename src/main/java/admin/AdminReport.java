@@ -4,11 +4,13 @@ import Server.MessageHistory;
 import java.awt.Color;
 import java.time.LocalTime;
 import java.time.format.DateTimeFormatter;
+import javax.swing.table.DefaultTableModel;
 
 public class AdminReport extends javax.swing.JFrame {
 
     Color textPrimaryColor = new Color(0, 0, 0);
     Color primaryColor = new Color(0, 102, 102);
+    public static DefaultTableModel modelReport;
 
     public AdminReport() {
         initComponents();
@@ -61,17 +63,16 @@ public class AdminReport extends javax.swing.JFrame {
             }
         });
 
-        jTable1.setModel(new javax.swing.table.DefaultTableModel(
-            new Object [][] {
-                {null},
-                {null},
-                {null},
-                {null}
-            },
-            new String [] {
-                "Danh sách Report"
-            }
-        ));
+        jTable1.setFont(new java.awt.Font("Times New Roman", 0, 14));
+        modelReport = new DefaultTableModel(new Object [][] {
+            {"abc@gmail.com"}
+        },
+        new String [] {
+            "Danh sách Report"
+        });
+        jTable1.setModel(modelReport
+        );
+        jTable1.setEnabled(false);
         jScrollPane2.setViewportView(jTable1);
 
         javax.swing.GroupLayout jPanel1Layout = new javax.swing.GroupLayout(jPanel1);
@@ -226,7 +227,7 @@ public class AdminReport extends javax.swing.JFrame {
     private javax.swing.JPanel jPanel4;
     private javax.swing.JScrollPane jScrollPane1;
     private javax.swing.JScrollPane jScrollPane2;
-    private javax.swing.JTable jTable1;
+    public static javax.swing.JTable jTable1;
     public static javax.swing.JTextArea jTextArea1;
     private javax.swing.JTextField jTextField1;
     // End of variables declaration//GEN-END:variables

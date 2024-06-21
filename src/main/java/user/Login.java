@@ -19,7 +19,7 @@ import admin.AdminNotification;
 import admin.AdminReport;
 
 public class Login extends javax.swing.JFrame {
-    
+
     public static int role;
     private ButtonGroup buttonGroup = new ButtonGroup();
     Statistics statistics = new Statistics();
@@ -30,7 +30,6 @@ public class Login extends javax.swing.JFrame {
     public Login() {
         initComponents();
         init();
-        
 
     }
 
@@ -365,15 +364,15 @@ public class Login extends javax.swing.JFrame {
                     ResultSet rs = ps.executeQuery();
                     if (rs.next()) {
                         Server.MessageHistory history = new MessageHistory();
-                        role = 2;
+                        role = 1;
                         admin.AdminNotification adminNotification = new AdminNotification();
                         adminNotification.setVisible(false);
                         history.readXML(role);
-                        
+
                         admin.AdminReport adminReport = new AdminReport();
                         adminReport.setVisible(false);
 
-                        AdminDashboard ad = new AdminDashboard(adminNotification,adminReport);
+                        AdminDashboard ad = new AdminDashboard(adminNotification, adminReport);
                         ad.setVisible(true);
                         ad.pack();
                         statistics.admin();
@@ -387,7 +386,7 @@ public class Login extends javax.swing.JFrame {
                 }
             }
             if (jCheckBox2.isSelected()) {
-                role = 1;
+                role = 2;
                 Connection con = MyConnection.getConnection();
                 try {
                     PreparedStatement ps;
@@ -397,15 +396,17 @@ public class Login extends javax.swing.JFrame {
                     ps.setString(2, passToMD5);
                     ResultSet rs = ps.executeQuery();
                     if (rs.next()) {
-                        SupplierDashboard sd = new SupplierDashboard();
+                        Notification notification = new Notification();
+                        notification.setVisible(false);
+                        Server.MessageHistory messageHistory = new MessageHistory();
+                        messageHistory.readXML(role);
+
+                        SupplierDashboard sd = new SupplierDashboard(notification);
                         sd.setVisible(true);
                         sd.pack();
                         statistics.supplier(rs.getString(2));
                         this.dispose();
-                        user.Notification notification = new Notification();
-                        notification.setVisible(false);
-                        Server.MessageHistory messageHistory = new MessageHistory();
-                        messageHistory.readXML(role);
+
                     } else {
                         JOptionPane.showMessageDialog(this, "Mật khẩu hoạc tài khoản không hợp lệ", "Đăng nhập thất bại", 2);
                     }
@@ -414,7 +415,7 @@ public class Login extends javax.swing.JFrame {
                 }
             }
             if (jCheckBox3.isSelected()) {
-                role = 1;
+                role = 3;
                 Connection con = MyConnection.getConnection();
                 try {
                     PreparedStatement ps;

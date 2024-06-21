@@ -5,16 +5,20 @@ import java.io.InputStream;
 import java.io.OutputStream;
 import java.net.Socket;
 
-public class ClientHandler implements Runnable {
-
+public class ClientReport implements Runnable {
+    
+    private admin.AdminReport adminReport;
     private Socket mySocket;
     private Server server;
+    private String id;
     private InputStream input;
     private OutputStream output;
 
-    public ClientHandler(Socket mySocket, Server server) {
+    public ClientReport(Socket mySocket, Server server,String id,admin.AdminReport adminReport) {
         this.mySocket = mySocket;
         this.server = server;
+        this.id = id;
+        this.adminReport = adminReport;
         try {
             this.input = mySocket.getInputStream();
             this.output = mySocket.getOutputStream();
@@ -23,9 +27,9 @@ public class ClientHandler implements Runnable {
         }
     }
 
-    public void sendMessage(String message) {
+    public void sendReport(String id) {
         try {
-            output.write(message.getBytes());
+            output.write(id.getBytes());
         } catch (IOException e) {
             e.printStackTrace();
         }
@@ -37,12 +41,13 @@ public class ClientHandler implements Runnable {
             byte[] buffer = new byte[1024];
             int byteRead;
             while ((byteRead = input.read(buffer)) != -1) {
-                String message = new String(buffer, 0, byteRead);
-                server.broadcastMessage("Thông báo từ quản trị viên", message);
+                String id = new String(buffer, 0, byteRead);
+                server.ListReport(id);
             }
         } catch (Exception e) {
             e.printStackTrace();
         }
     }
-
 }
+
+

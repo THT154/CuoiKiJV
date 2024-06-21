@@ -17,7 +17,7 @@ public class MessageHistory {
     // Phương thức thêm phần tử vào XML
     public void addElement(String name, String content) {
         try {
-            File inputFile = new File("C:\\Users\\ADMIN\\Documents\\NetBeansProjects\\LTJV\\src\\Server\\MessageHistory.xml");
+            File inputFile = new File("src\\main\\java\\Server\\MessageHistory.xml");
             DocumentBuilderFactory docFactory = DocumentBuilderFactory.newInstance();
             DocumentBuilder docBuilder = docFactory.newDocumentBuilder();
             Document doc = docBuilder.parse(inputFile);
@@ -39,9 +39,9 @@ public class MessageHistory {
 
     // Phương thức để thêm tin nhắn vào JTextArea
     private void addMessageToUI(String id, String message, String time, int role) {
-        if (role == 1) {
+        if (role == 2 || role == 3) {
             user.Notification.jTextArea1.append(id + message + "\n" + time + "\n");
-        } else {
+        }else {
             admin.AdminNotification.jTextArea1.append("You: " + message + "\n" + time + "\n");
         }
     }
@@ -60,7 +60,7 @@ public class MessageHistory {
         String stringTime = null;
 
         try {
-            File inputFile = new File("C:\\Users\\ADMIN\\Documents\\NetBeansProjects\\LTJV\\src\\Server\\MessageHistory.xml");
+            File inputFile = new File("src\\main\\java\\Server\\MessageHistory.xml");
             DocumentBuilderFactory factory = DocumentBuilderFactory.newInstance();
             DocumentBuilder builder = factory.newDocumentBuilder();
             Document document = builder.parse(inputFile);

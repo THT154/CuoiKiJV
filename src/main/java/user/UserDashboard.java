@@ -8,13 +8,16 @@ import java.awt.Color;
 import javax.swing.JOptionPane;
 import Client.Client;
 import Client.MainClient;
+import admin.AdminReport;
+import javax.swing.table.DefaultTableModel;
 import user.Notification;
+
 /**
  *
  * @author nghia123
  */
 public class UserDashboard extends javax.swing.JFrame {
-    
+
     private Notification notification;
     Color selectioncolor = new Color(34, 48, 62);
     Color sideColor = new Color(64, 194, 150);
@@ -27,8 +30,6 @@ public class UserDashboard extends javax.swing.JFrame {
         this.notification = notification;
         initComponents();
         init();
-        notification = new Notification();
-        notification.setVisible(false);
     }
 
     /**
@@ -519,20 +520,24 @@ public class UserDashboard extends javax.swing.JFrame {
 
     private void jLabel23MouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_jLabel23MouseClicked
         // TODO add your handling code here:
-        
-        
-        jPanel14.setBackground(selectioncolor);
-        jPanel15.setBackground(sideColor);
-        jLabel23.setForeground(textSelectioncolor);
-        jLabel27.setVisible(false);
-        jLabel28.setVisible(true);
-        
-        UserReport userReport = new UserReport();
-        userReport.setVisible(true);
-        userReport.pack();
-        
-    }//GEN-LAST:event_jLabel23MouseClicked
+        int report = JOptionPane.showConfirmDialog(this, "Bạn có chắc chắn muốn gửi báo cáo đến Admin? ", "Xác nhận", JOptionPane.OK_CANCEL_OPTION);
+        if (report == JOptionPane.OK_OPTION) {
+            String mail = userEmail.getText().toString();
+            AdminReport.modelReport.addRow(new Object[]{mail});
 
+            jPanel14.setBackground(selectioncolor);
+            jPanel15.setBackground(sideColor);
+            jLabel23.setForeground(textSelectioncolor);
+            jLabel27.setVisible(false);
+            jLabel28.setVisible(true);
+
+            UserReport userReport = new UserReport();
+            userReport.setVisible(true);
+            userReport.pack();
+        }
+
+
+    }//GEN-LAST:event_jLabel23MouseClicked
 
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
